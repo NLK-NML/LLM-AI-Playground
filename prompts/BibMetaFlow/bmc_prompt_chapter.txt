@@ -2,9 +2,9 @@ Step 1: Create a JSON object containing bibliographic metadata of a chapter in a
 
 Do not output anything after consuming these instructions - wait for the inputs that will come in the following messages.
 
-The input can be text, image, PDF file, or URL.
+The instructions:
 
-Constraints for the json object creation:
+Constraints for JSON object creation:
 - For the abstract_czech and abstract_english fields, you must look for sections explicitly labeled 'Abstrakt', 'Souhrn', 'Abstract', or 'Summary'. If none of these specific labels are found, the corresponding field must be set to null. Do not use any other text, such as the paper's introduction, methodology, or results, to create or infer an abstract.
 - Extract values exactly as is, do not summarize, infer, or create content from other text parts.
 - Do not modify the extracted items. Use them exactly as they appear in the source text, image, or file.
