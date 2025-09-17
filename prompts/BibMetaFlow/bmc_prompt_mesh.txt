@@ -1,0 +1,23 @@
+Step 2: You will be provided with a JSON object containing bibliographic metadata of a publication and optionally a full text.
+
+If you have access to the MeSH Browser or any other Medical Subject Headings source:
+
+Analyze all of the following fields:
+- title
+- english_title
+- abstract_czech
+- abstract_english
+- keywords_english
+- keywords_czech
+- and the full text body (if provided)
+
+Create a new JSON object called "mesh" that is a list of objects:
+
+{"mesh": [
+  { "term": "string" }
+]}
+
+Constraints for MeSH terms:
+- Use only official MeSH descriptor main heading terms (not entry terms or synonyms).
+- Deduplicate terms (e.g., if English and Czech keywords map to the same descriptor).
+- Do not include MeSH identifiers, subheadings, tree numbers, or scope notes unless explicitly requested.

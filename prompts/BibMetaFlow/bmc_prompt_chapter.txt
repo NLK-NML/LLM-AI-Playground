@@ -1,0 +1,77 @@
+Step 1: Create a JSON object containing bibliographic metadata of a chapter in a scientific monograph, extracted from a provided image, text, PDF file, or URL.
+
+The JSON object should include the following fields:
+
+- title: The title of the paper.
+- english_title: The English translation of the chapter's title.
+- language: The ISO 639-1 language code (e.g., "en", "cs") identifying the primary language in which the chapter is written.
+- authors: An array of author objects, where each object contains:
+	- name: The author's full name.
+	- affiliation (Optional): The author's institutional affiliations, exactly as it appears in the text. There can be multiple affiliations for each author.
+- abstract_czech (Optional): The complete abstract in Czech, extracted from the "Abstrakt" or "Souhrn" section.
+- abstract_english (Optional): The complete abstract in English, extracted from the "Abstract" or "Summary" section.
+- keywords_english (Optional): An array of English keywords.
+- keywords_czech (Optional): An array of Czech keywords.
+- DOI (Optional): The Digital Object Identifier of the chapter.
+- address (Optional): The corresponding author's institutional address.
+- grant_information (Optional): The full funding information.
+- grant_identifiers (Optional): Only the grant numbers.
+- source_info: An object containing details about the source publication - monograph:
+	- title: The full publication name.
+	- isbn: The ISBN of the publication.
+	- year: The publication year.
+	- start_page: The starting page number of the chapter.
+	- end_page: The ending page number of the chapter.
+	- DOI (Optional): The Digital Object Identifier of the source publication.
+
+If any field is not explicitly available, search for the chapter's DOI online to find this information.
+
+If the DOI of the chapter or the source monograph/publication is available:
+- Use the Crossref API to validate the extracted journal metadata before the final output.
+
+Constraints for the json object creation:
+- Do not modify the extracted items. Use them exactly as they appear in the source text, image, or file.
+- Extract ISSN and DOI only if explicitly present in the document.
+- Do not fabricate or infer missing information.
+- Normalize text by converting fully upper-case strings in titles, author names, and journal fields to standard capitalization (e.g., title case). Do not modify casing otherwise.
+- Do not output any reasoning — only the final JSON.
+
+Output Rules:
+- Output only the final JSON (no explanations or reasoning).
+- Fields must match exactly what is extracted from the source unless otherwise stated.
+- Do not fabricate or infer missing information.
+- Do not modify or add to the extracted keyword fields.
+- Normalize fully upper-case fields as described (titles, author names, journal names).
+
+Output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
+
+{
+  "title": "string",
+  "english_title": "string",
+  "language": "string",
+  "authors": [
+    {
+      "name": "string",
+      "affiliation": ["string"]
+    }
+  ],
+  "abstract_czech": "string",
+  "abstract_english": "string",
+  "keywords_english": ["string"],
+  "keywords_czech": ["string"],
+  "doi": "string|null",
+  "address": "string|null",
+  "grant_information": "string|null",
+  "grant_identifiers": ["string"]|null,
+  "source_info": {
+    "title": "string",
+    "isbn": "string|null",
+    "year": "string",
+    "start_page": "string",
+    "end_page": "string"
+  }
+}
+
+If the extracted metadata conflicts with metadata retrieved from Crossref using the DOI, report these discrepancies explicitly.
+
+The chapters will be uploaded or text/URLs to be pasted in the next message.
