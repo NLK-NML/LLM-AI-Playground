@@ -7,7 +7,7 @@ Constraints for JSON object creation:
 - For the abstract_czech and abstract_english fields, you must look for sections explicitly labeled 'Abstrakt', 'Souhrn', 'Abstract', or 'Summary'. If none of these specific labels are found, the corresponding field must be set to null. Do not use any other text, such as the paper's introduction, methodology, or results, to create or infer an abstract.
 - Extract values exactly as is, do not summarize, infer, or create content from other text parts.
 - Do not modify the extracted items. Use them exactly as they appear in the source text, image, or file.
-- Do not fabricate or infer any value if missing information. 
+- Do not fabricate or infer any value if missing information.
 - Do not translate titles or abstracts into English.
 - Extract ISSN and DOI only if explicitly present in the document.
 - Normalize only values in titles, author names, and journal fields to standard capitalization (e.g., title case). Do not modify casing otherwise.
@@ -17,34 +17,33 @@ The JSON object should include the following fields:
 - title_english (Optional): The English translation of the paper's title.
 - language: The ISO 639-1 language code (e.g., "en", "cs") identifying the primary language in which the paper is written.
 - authors: An array of author objects, where each object contains:
-	- name: The author's full name.
-	- affiliation (Optional): The author's institutional affiliations, exactly as it appears in the text. There can be multiple affiliations for each author.
+    - name: The author's full name.
+    - affiliation (Optional): The author's institutional affiliations, exactly as it appears in the text. There can be multiple affiliations for each author.
 - abstract_czech (Optional): The complete abstract in Czech, extracted from the "Abstrakt" or "Souhrn" section if available. Do no fabricate or generate this value.
 - abstract_english (Optional): The complete abstract in English, extracted from the "Abstract" or "Summary" section if available. Do no fabricate or generate this value.
 - keywords_english (Optional): An array of English keywords.
 - keywords_czech (Optional): An array of Czech keywords.
-- doi (Optional): The Digital Object Identifier (DOI) of the paper. Extract only single one DOI if explicitly listed for this paper. Do not include DOIs of cited references.
+- doi (Optional): The Digital Object Identifier (DOI) of the paper. Extract only single one DOI from a full doi.org link if explicitly listed for this paper. Do not include DOIs of cited references.
 - address (Optional): The corresponding author's institutional address.
 - grant_information (Optional): The full funding information.
 - grant_identifiers (Optional): Only the grant numbers.
-- submission_date (Optional): The date the paper was submitted (format YYYY-MM-DD).
+- submission_date (Optional): The date the paper was submitted or was received (format YYYY-MM-DD).
 - acceptance_date (Optional): The date the paper was accepted (format YYYY-MM-DD).
 - journal_info: An object containing details about the journal:
-	- title: The full journal name.
-	- title_short: The abbreviated journal name.
-	- issn: The ISSN of the journal.
-	- year: The publication year.
-	- volume: The journal volume number.
-	- issue: The journal issue number.
-	- start_page: The starting page number of the article.
-	- end_page: The ending page number of the article.
+    - title: The full journal name.
+    - title_short: The abbreviated journal name.
+    - issn: The ISSN of the journal.
+    - year: The publication year.
+    - volume: The journal volume number.
+    - issue: The journal issue number.
+    - start_page: The starting page number of the article.
+    - end_page: The ending page number of the article.
 
 Output Rules:
 - Output only the final JSON (no explanations or reasoning).
 - Do not fabricate or infer missing information.
 - Do not modify or add to the extracted keyword fields.
-- Normalize fully upper-case fields as described (titles, author names, journal names).
-- Use pretty print and convert any Unicode escape sequences (e.g., \uXXXX). Ensure all special characters are rendered directly.
+- Use pretty print and convert any Unicode escape sequences (e.g., \\uXXXX). Ensure all special characters are rendered directly.
 - The output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 {
   "title": "string",
@@ -77,5 +76,7 @@ Output Rules:
     "end_page": "string|null"
   }
 }
+
+**Return a valid JSON object only, without any markdown formatting, comments, or other text outside of the JSON structure itself.**
 
 Do not output anything - just wait for the input in the next prompt message.
