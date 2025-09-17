@@ -4,7 +4,7 @@ The JSON object should include the following fields:
 
 - title: The title of the paper.
 - title_english: The English translation of the paper's title.
-- language: The ISO 639-1 language code (e.g., "en", "cs") identifying the primary language in which the article is written.
+- language: The ISO 639-1 language code (e.g., "en", "cs") identifying the primary language in which the paper is written.
 - authors: An array of author objects, where each object contains:
 	- name: The author's full name.
 	- affiliation (Optional): The author's institutional affiliations, exactly as it appears in the text. There can be multiple affiliations for each author.
@@ -88,5 +88,5 @@ Output JSON object should follow this structure exactly (use null or empty array
 
 If the extracted metadata conflicts with metadata retrieved from Crossref using the DOI, report these discrepancies explicitly.
 
-The articles will be uploaded or text/URLs to be pasted in the next message.
+The input will be uploaded or text/URLs to be pasted in the next message.
 
