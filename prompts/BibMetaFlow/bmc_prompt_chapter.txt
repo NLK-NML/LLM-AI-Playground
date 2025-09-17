@@ -3,7 +3,7 @@ Step 1: Create a JSON object containing bibliographic metadata of a chapter in a
 The JSON object should include the following fields:
 
 - title: The title of the paper.
-- title_english: The English translation of the chapter's title.
+- title_english (Optional): The English translation of the chapter's title.
 - language: The ISO 639-1 language code (e.g., "en", "cs") identifying the primary language in which the chapter is written.
 - authors: An array of author objects, where each object contains:
 	- name: The author's full name.
@@ -50,7 +50,7 @@ Output JSON object should follow this structure exactly (use null or empty array
 
 {
   "title": "string",
-  "title_english": "string",
+  "title_english": "string|null",
   "language": "string",
   "authors": [
     {
@@ -58,8 +58,8 @@ Output JSON object should follow this structure exactly (use null or empty array
       "affiliation": ["string"]
     }
   ],
-  "abstract_czech": "string",
-  "abstract_english": "string",
+  "abstract_czech": "string|null",
+  "abstract_english": "string|null",
   "keywords_english": ["string"],
   "keywords_czech": ["string"],
   "doi": "string|null",
@@ -67,11 +67,11 @@ Output JSON object should follow this structure exactly (use null or empty array
   "grant_information": "string|null",
   "grant_identifiers": ["string"]|null,
   "source_info": {
-    "title": "string",
+    "title": "string|null",
     "isbn": "string|null",
-    "year": "string",
-    "start_page": "string",
-    "end_page": "string"
+    "year": "string|null",
+    "start_page": "string|null",
+    "end_page": "string|null"
   }
 }
 
