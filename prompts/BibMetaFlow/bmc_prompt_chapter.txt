@@ -1,4 +1,8 @@
-Step 1: Create a JSON object containing bibliographic metadata of a chapter in a scientific monograph, extracted from a provided image, text, PDF file, or URL.
+Step 1: Create a JSON object containing bibliographic metadata of a chapter in a scientific monograph by the following instructions.
+
+Do not output anything after consuming these instructions - wait for the inputs that will come in the following messages.
+
+The input can be text, image, PDF file, or URL.
 
 Constraints for the json object creation:
 - For the abstract_czech and abstract_english fields, you must look for sections explicitly labeled 'Abstrakt', 'Souhrn', 'Abstract', or 'Summary'. If none of these specific labels are found, the corresponding field must be set to null. Do not use any other text, such as the paper's introduction, methodology, or results, to create or infer an abstract.
@@ -37,7 +41,7 @@ Output Rules:
 - Do not modify or add to the extracted keyword fields.
 - Normalize fully upper-case fields as described (titles, author names, journal names).
 - Use pretty print. 
-- Output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
+- The output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 {
   "title": "string",
   "title_english": "string|null",
@@ -64,5 +68,3 @@ Output Rules:
     "end_page": "string|null"
   }
 }
-
-The input will be uploaded or text/URLs to be pasted in the next message.
