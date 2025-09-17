@@ -40,7 +40,7 @@ Output Rules:
 - Do not fabricate or infer missing information.
 - Do not modify or add to the extracted keyword fields.
 - Normalize fully upper-case fields as described (titles, author names, journal names).
-- Use pretty print. 
+- Use pretty print and convert any Unicode escape sequences (e.g., \uXXXX). Ensure all special characters are rendered directly.
 - The output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 {
   "title": "string",
@@ -49,13 +49,13 @@ Output Rules:
   "authors": [
     {
       "name": "string",
-      "affiliation": ["string"]
+      "affiliation": ["string"]|null
     }
   ],
   "abstract_czech": "string|null",
   "abstract_english": "string|null",
-  "keywords_english": ["string"],
-  "keywords_czech": ["string"],
+  "keywords_english": ["string"]|null,
+  "keywords_czech": ["string"]|null,
   "doi": "string|null",
   "address": "string|null",
   "grant_information": "string|null",
@@ -69,4 +69,4 @@ Output Rules:
   }
 }
 
-
+Do not output anything - just wait for the input in the next prompt message.
