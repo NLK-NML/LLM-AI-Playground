@@ -1,9 +1,9 @@
 # Chat applications
 
-| # | Name              | Company                   | Link                                                                 | Ext API calls | 
-|---|------------------|-----------------|--------------------------------------------------|---------------|
-| 1 | **ChatGPT**       | OpenAI                    | [https://chatgpt.com/](https://chatgpt.com/)                         | Yes | 
-| 2 | **Claude**        | Anthropic                 | [https://www.anthropic.com/claude](https://www.anthropic.com/claude) | Yes | 
-| 3 | **Gemini**        | Google / DeepMind         | [https://gemini.google.com/](https://gemini.google.com/)             | Yes | 
-| 4 | **Grok**          | xAI                       | [https://grok.com/](https://grok.com/)                               | Yes | 
-| 5 | **Perplexity AI** | Perplexity Labs           | [https://perplexity.ai/](https://perplexity.ai/)                     | Yes | 
+| Name              | Company         | Link                            | Ext API calls | Model  |
+|-------------------|-----------------|---------------------------------|---------------|--------|
+| **ChatGPT**       | OpenAI          | https://chatgpt.com              | Yes          | GPT-5  |
+| **Claude**        | Anthropic       | https://www.anthropic.com/claude | Yes          | Claude 3 |
+| **Gemini**        | Google          | https://gemini.google.com        | Yes          | Sonnet 4 |
+| **Grok**          | xAI             | https://grok.com                 | Yes          | Grok 1 |
+| **DeepSeek**      | DeepSeek        | https://chat.deepseek.com/       | No           | DeepSeek-V3 |
