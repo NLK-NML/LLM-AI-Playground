@@ -12,7 +12,7 @@ The JSON object should include the following fields:
 - abstract_english (Optional): The complete abstract in English, extracted from the "Abstract" or "Summary" section.
 - keywords_english (Optional): An array of English keywords.
 - keywords_czech (Optional): An array of Czech keywords.
-- DOI (Optional): The Digital Object Identifier of the chapter.
+- DOI (Optional): The Digital Object Identifier of the chapter - only if one DOI is contained on the first page of the chapter. 
 - address (Optional): The corresponding author's institutional address.
 - grant_information (Optional): The full funding information.
 - grant_identifiers (Optional): Only the grant numbers.
@@ -22,17 +22,9 @@ The JSON object should include the following fields:
 	- year: The publication year.
 	- start_page: The starting page number of the chapter.
 	- end_page: The ending page number of the chapter.
-	- DOI (Optional): The Digital Object Identifier of the source publication.
 
-If any field is not explicitly available, search for the chapter's DOI online to find this information.
-
-If the DOI of the chapter or the source monograph/publication is available:
-- Extract DOI only if exactly one DOI is explicitly present in the source document (text, PDF, image, or URL).
-- If multiple DOIs are present, do not select any of them and leave the doi field as null.
-- Do not infer, fabricate, or search for DOIs that are not explicitly provided in the document.
-
-Use the extracted DOI only for:
-- Use the Crossref API to validate the extracted journal metadata before the final output.
+If only one DOI is available - use the extracted DOI for:
+- Use the Crossref API to validate the extracted metadata before the final output.
 
 Constraints for the json object creation:
 - Do not modify the extracted items. Use them exactly as they appear in the source text, image, or file.
