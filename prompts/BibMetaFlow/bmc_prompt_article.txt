@@ -39,7 +39,6 @@ Constraints for the json object creation:
 - Do not translate titles or abstracts into English.
 - Extract ISSN and DOI only if explicitly present in the document.
 - Normalize only values in titles, author names, and journal fields to standard capitalization (e.g., title case). Do not modify casing otherwise.
-- Do not output any reasoning - only the final JSON.
 
 Output Rules:
 - Output only the final JSON (no explanations or reasoning).
@@ -47,7 +46,7 @@ Output Rules:
 - Do not modify or add to the extracted keyword fields.
 - Normalize fully upper-case fields as described (titles, author names, journal names).
 - Replace any dashes with hyphen.
-- Pretty print the JSON.
+- Output the final JSON object with pretty printing, including indentation and line breaks, to ensure it is human-readable using an indentation of 2 or 4 spaces."
 
 Output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 
@@ -84,7 +83,7 @@ Output JSON object should follow this structure exactly (use null or empty array
   "pubmedid": "string|null",
 }
 
-If the extracted metadata conflicts with metadata retrieved from Crossref using the DOI, report these discrepancies explicitly.
+If the extracted metadata conflicts with metadata retrieved from Crossref API using the DOI, report these discrepancies explicitly.
 
 The input will be uploaded or text/URLs to be pasted in the next message.
 
