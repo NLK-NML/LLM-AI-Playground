@@ -12,7 +12,7 @@ The JSON object should include the following fields:
 - abstract_english (Optional): The complete abstract in English, extracted from the "Abstract" or "Summary" section if available. Do no fabricate or generate this value.
 - keywords_english (Optional): An array of English keywords.
 - keywords_czech (Optional): An array of Czech keywords.
-- DOI (Optional): The Digital Object Identifier of the paper - only if one DOI is contained on the first page of the paper. 
+- doi (Optional): The Digital Object Identifier (DOI) of the paper. Extract only if explicitly listed for this paper. Do not include DOIs of cited references.
 - address (Optional): The corresponding author's institutional address.
 - grant_information (Optional): The full funding information.
 - grant_identifiers (Optional): Only the grant numbers.
@@ -28,7 +28,13 @@ The JSON object should include the following fields:
 	- start_page: The starting page number of the article.
 	- end_page: The ending page number of the article.
 
-If only one DOI is available - use the extracted DOI for:
+The DOI extraction rules:
+- If the first page of the paper contains exactly one DOI, use that DOI to:  
+  - Validate the extracted metadata via the Crossref API.  
+  - Retrieve the PubMed ID and include it in the `pubmedid` field.  
+- If the first page contains zero or more than one DOI, do not use any DOI for validation or fetching additional metadata.  
+
+If only the one DOI has been extracted - use this DOI for:
 - Use the Crossref API if available to validate the extracted metadata before the final output.
 - Fetch the PubMed ID using the DOI and include it in a field named "pubmedid".
 
