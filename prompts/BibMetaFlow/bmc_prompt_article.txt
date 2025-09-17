@@ -8,8 +8,8 @@ The JSON object should include the following fields:
 - authors: An array of author objects, where each object contains:
 	- name: The author's full name.
 	- affiliation (Optional): The author's institutional affiliations, exactly as it appears in the text. There can be multiple affiliations for each author.
-- abstract_czech (Optional): The complete abstract in Czech, extracted from the "Abstrakt" or "Souhrn" section.
-- abstract_english (Optional): The complete abstract in English, extracted from the "Abstract" or "Summary" section.
+- abstract_czech (Optional): The complete abstract in Czech, extracted from the "Abstrakt" or "Souhrn" section if available. Do no fabricate or generate this value.
+- abstract_english (Optional): The complete abstract in English, extracted from the "Abstract" or "Summary" section if available. Do no fabricate or generate this value.
 - keywords_english (Optional): An array of English keywords.
 - keywords_czech (Optional): An array of Czech keywords.
 - DOI (Optional): The Digital Object Identifier of the paper - only if one DOI is contained on the first page of the paper. 
@@ -34,7 +34,7 @@ If only one DOI is available - use the extracted DOI for:
 
 Constraints for the json object creation:
 - Do not modify the extracted items. Use them exactly as they appear in the source text, image, or file.
-- Do not fabricate or infer any missing information or item.
+- Do not fabricate or infer any value if missing information. 
 - Do not translate titles or abstracts into English.
 - Extract ISSN and DOI only if explicitly present in the document.
 - Normalize only values in titles, author names, and journal fields to standard capitalization (e.g., title case). Do not modify casing otherwise.
