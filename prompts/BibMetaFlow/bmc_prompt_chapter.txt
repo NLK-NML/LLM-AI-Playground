@@ -40,7 +40,7 @@ Output Rules:
 - Do not fabricate or infer missing information.
 - Do not modify or add to the extracted keyword fields.
 - Normalize fully upper-case fields as described (titles, author names, journal names).
-- Use pretty print. 
+- Use pretty print and convert any Unicode escape sequences (e.g., \uXXXX). Ensure all special characters are rendered directly.
 - The output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 {
   "title": "string",
