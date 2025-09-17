@@ -27,6 +27,11 @@ The JSON object should include the following fields:
 If any field is not explicitly available, search for the chapter's DOI online to find this information.
 
 If the DOI of the chapter or the source monograph/publication is available:
+- Extract DOI only if exactly one DOI is explicitly present in the source document (text, PDF, image, or URL).
+- If multiple DOIs are present, do not select any of them and leave the doi field as null.
+- Do not infer, fabricate, or search for DOIs that are not explicitly provided in the document.
+
+Use the extracted DOI only for:
 - Use the Crossref API to validate the extracted journal metadata before the final output.
 
 Constraints for the json object creation:
