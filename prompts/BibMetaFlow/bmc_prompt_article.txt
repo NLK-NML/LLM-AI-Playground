@@ -1,4 +1,8 @@
-Step 1: Create a JSON object containing bibliographic metadata of a scientific paper, extracted from a provided image, text, PDF file, or URL.
+Step 1: Create a JSON object containing bibliographic metadata of a chapter in a scientific monograph by the following instructions.
+
+Do not output anything after consuming these instructions - wait for the inputs that will come in the following messages.
+
+The input can be text, image, PDF file, or URL.
 
 Constraints for the json object creation:
 - For the abstract_czech and abstract_english fields, you must look for sections explicitly labeled 'Abstrakt', 'Souhrn', 'Abstract', or 'Summary'. If none of these specific labels are found, the corresponding field must be set to null. Do not use any other text, such as the paper's introduction, methodology, or results, to create or infer an abstract.
@@ -11,8 +15,8 @@ Constraints for the json object creation:
 
 The JSON object should include the following fields:
 - title: The title of the paper.
-- title_english (Optional): The English translation of the paper's title.
-- language: The ISO 639-1 language code (e.g., "en", "cs") identifying the primary language in which the paper is written.
+- title_english (Optional): The English translation of the chapter's title.
+- language: The ISO 639-1 language code (e.g., "en", "cs") identifying the primary language in which the chapter is written.
 - authors: An array of author objects, where each object contains:
 	- name: The author's full name.
 	- affiliation (Optional): The author's institutional affiliations, exactly as it appears in the text. There can be multiple affiliations for each author.
@@ -20,21 +24,16 @@ The JSON object should include the following fields:
 - abstract_english (Optional): The complete abstract in English, extracted from the "Abstract" or "Summary" section if available. Do no fabricate or generate this value.
 - keywords_english (Optional): An array of English keywords.
 - keywords_czech (Optional): An array of Czech keywords.
-- doi (Optional): The Digital Object Identifier (DOI) of the paper. Extract only single one DOI if explicitly listed for this paper. Do not include DOIs of cited references.
+- doi (Optional): The Digital Object Identifier (DOI) of the chapter. Extract only single one DOI if explicitly listed for this chapter. Do not include DOIs of cited references.
 - address (Optional): The corresponding author's institutional address.
 - grant_information (Optional): The full funding information.
 - grant_identifiers (Optional): Only the grant numbers.
-- submission_date (Optional): The date the paper was submitted (format YYYY-MM-DD).
-- acceptance_date (Optional): The date the paper was accepted (format YYYY-MM-DD).
-- journal_info: An object containing details about the journal:
-	- title: The full journal name.
-	- title_short: The abbreviated journal name.
-	- issn: The ISSN of the journal.
+- source_info: An object containing details about the source publication - monograph:
+	- title: The full publication name.
+	- isbn: The ISBN of the publication.
 	- year: The publication year.
-	- volume: The journal volume number.
-	- issue: The journal issue number.
-	- start_page: The starting page number of the article.
-	- end_page: The ending page number of the article.
+	- start_page: The starting page number of the chapter.
+	- end_page: The ending page number of the chapter.
 
 Output Rules:
 - Output only the final JSON (no explanations or reasoning).
@@ -42,7 +41,7 @@ Output Rules:
 - Do not modify or add to the extracted keyword fields.
 - Normalize fully upper-case fields as described (titles, author names, journal names).
 - Use pretty print. 
-- Output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
+- The output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 {
   "title": "string",
   "title_english": "string|null",
@@ -61,18 +60,13 @@ Output Rules:
   "address": "string|null",
   "grant_information": "string|null",
   "grant_identifiers": ["string"]|null,
-  "submission_date": "YYYY-MM-DD|null",
-  "acceptance_date": "YYYY-MM-DD|null",
-  "journal_info": {
+  "source_info": {
     "title": "string|null",
-    "title_short": "string|null",
-    "issn": "string|null",
+    "isbn": "string|null",
     "year": "string|null",
-    "volume": "string|null",
-    "issue": "string|null",
     "start_page": "string|null",
     "end_page": "string|null"
   }
 }
 
-The input will be uploaded or text/URLs to be pasted in the next message.
+
