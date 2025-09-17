@@ -49,13 +49,13 @@ Output Rules:
   "authors": [
     {
       "name": "string",
-      "affiliation": ["string"]
+      "affiliation": ["string"]|null
     }
   ],
   "abstract_czech": "string|null",
   "abstract_english": "string|null",
-  "keywords_english": ["string"],
-  "keywords_czech": ["string"],
+  "keywords_english": ["string"]|null,
+  "keywords_czech": ["string"]|null,
   "doi": "string|null",
   "address": "string|null",
   "grant_information": "string|null",
