@@ -33,7 +33,7 @@ Constraints for the json object creation:
 - Do not modify the extracted items. Use them exactly as they appear in the source text, image, or file.
 - Extract ISSN and DOI only if explicitly present in the document.
 - Do not fabricate or infer missing information.
-- Normalize text by converting fully upper-case strings in titles, author names, and journal fields to standard capitalization (e.g., title case). Do not modify casing otherwise.
+- Normalize only values in titles, author names, and journal fields to standard capitalization (e.g., title case). Do not modify casing otherwise.
 - Do not output any reasoning — only the final JSON.
 
 Output Rules:
