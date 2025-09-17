@@ -51,11 +51,8 @@ Output Rules:
 - Do not fabricate or infer missing information.
 - Do not modify or add to the extracted keyword fields.
 - Normalize fully upper-case fields as described (titles, author names, journal names).
-- Replace any m-dash or n-dash with hyphen.
-- Output the final JSON object with pretty printing, including indentation and line breaks, to ensure it is human-readable using an indentation of 2 or 4 spaces."
-
-Output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
-
+- Use pretty print 
+- Output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 {
   "title": "string",
   "title_english": "string|null",
