@@ -20,7 +20,7 @@ The JSON object should include the following fields:
 - abstract_english (Optional): The complete abstract in English, extracted from the "Abstract" or "Summary" section if available. Do no fabricate or generate this value.
 - keywords_english (Optional): An array of English keywords.
 - keywords_czech (Optional): An array of Czech keywords.
-- doi (Optional): The Digital Object Identifier (DOI) of the paper. Extract only if explicitly listed for this paper. Do not include DOIs of cited references.
+- doi (Optional): The Digital Object Identifier (DOI) of the paper. Extract only single one DOI if explicitly listed for this paper. Do not include DOIs of cited references.
 - address (Optional): The corresponding author's institutional address.
 - grant_information (Optional): The full funding information.
 - grant_identifiers (Optional): Only the grant numbers.
@@ -35,16 +35,6 @@ The JSON object should include the following fields:
 	- issue: The journal issue number.
 	- start_page: The starting page number of the article.
 	- end_page: The ending page number of the article.
-
-The DOI extraction rules:
-- If the first page of the paper contains exactly one DOI, use that DOI to:  
-  - Validate the extracted metadata via the Crossref API.  
-  - Retrieve the PubMed ID and include it in the `pubmedid` field.  
-- If the first page contains zero or more than one DOI, do not use any DOI for validation or fetching additional metadata.  
-
-If only the one DOI has been extracted - use this DOI for:
-- Use the Crossref API if available to validate the extracted metadata before the final output.
-- Fetch the PubMed ID using the DOI and include it in a field named "pubmedid".
 
 Output Rules:
 - Output only the final JSON (no explanations or reasoning).
@@ -82,10 +72,7 @@ Output Rules:
     "issue": "string|null",
     "start_page": "string|null",
     "end_page": "string|null"
-  },
-  "pubmedid": "string|null",
+  }
 }
-
-If the extracted metadata conflicts with metadata retrieved from Crossref API using the DOI, report these discrepancies explicitly.
 
 The input will be uploaded or text/URLs to be pasted in the next message.
