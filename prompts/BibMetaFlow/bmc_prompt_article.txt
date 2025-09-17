@@ -3,7 +3,7 @@ Step 1: Create a JSON object containing bibliographic metadata of a scientific p
 The JSON object should include the following fields:
 
 - title: The title of the paper.
-- english_title: The English translation of the paper's title.
+- title_english: The English translation of the paper's title.
 - language: The ISO 639-1 language code (e.g., "en", "cs") identifying the primary language in which the article is written.
 - authors: An array of author objects, where each object contains:
 	- name: The author's full name.
@@ -39,7 +39,7 @@ Constraints for the json object creation:
 - Extract ISSN and DOI only if explicitly present in the document.
 - Do not fabricate or infer missing information.
 - Normalize text by converting fully upper-case strings in titles, author names, and journal fields to standard capitalization (e.g., title case). Do not modify casing otherwise.
-- Do not output any reasoning — only the final JSON.
+- Do not output any reasoning - only the final JSON.
 
 Output Rules:
 - Output only the final JSON (no explanations or reasoning).
@@ -47,12 +47,14 @@ Output Rules:
 - Do not fabricate or infer missing information.
 - Do not modify or add to the extracted keyword fields.
 - Normalize fully upper-case fields as described (titles, author names, journal names).
+- Replace any dashes with hyphen.
+- Pretty print the JSON.
 
 Output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 
 {
   "title": "string",
-  "english_title": "string",
+  "title_english": "string",
   "language": "string",
   "authors": [
     {
