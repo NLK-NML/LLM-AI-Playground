@@ -68,3 +68,5 @@ Output Rules:
     "end_page": "string|null"
   }
 }
+
+Do not output anything - just wait for the input in the next prompt message.
