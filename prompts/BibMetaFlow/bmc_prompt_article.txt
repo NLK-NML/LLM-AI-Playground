@@ -51,7 +51,7 @@ Output Rules:
 - Do not fabricate or infer missing information.
 - Do not modify or add to the extracted keyword fields.
 - Normalize fully upper-case fields as described (titles, author names, journal names).
-- Use pretty print 
+- Use pretty print. 
 - Output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 {
   "title": "string",
