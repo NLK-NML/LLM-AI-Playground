@@ -29,7 +29,7 @@ The JSON object should include the following fields:
 	- end_page: The ending page number of the article.
 
 If only one DOI is available - use the extracted DOI for:
-- Use the Crossref API to validate the extracted metadata before the final output.
+- Use the Crossref API if available to validate the extracted metadata before the final output.
 - Fetch the PubMed ID using the DOI and include it in a field named "pubmedid".
 
 Constraints for the json object creation:
