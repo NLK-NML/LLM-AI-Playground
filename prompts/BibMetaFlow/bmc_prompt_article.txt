@@ -33,6 +33,7 @@ If only one DOI is available - use the extracted DOI for:
 - Fetch the PubMed ID using the DOI and include it in a field named "pubmedid".
 
 Constraints for the json object creation:
+- Extract values exactly as is, do not summarize, infer, or create content from other text parts.
 - Do not modify the extracted items. Use them exactly as they appear in the source text, image, or file.
 - Do not fabricate or infer any value if missing information. 
 - Do not translate titles or abstracts into English.
@@ -42,7 +43,6 @@ Constraints for the json object creation:
 
 Output Rules:
 - Output only the final JSON (no explanations or reasoning).
-- Fields must match exactly what is extracted from the source unless otherwise stated.
 - Do not fabricate or infer missing information.
 - Do not modify or add to the extracted keyword fields.
 - Normalize fully upper-case fields as described (titles, author names, journal names).
