@@ -1,7 +1,15 @@
 Step 1: Create a JSON object containing bibliographic metadata of a scientific paper, extracted from a provided image, text, PDF file, or URL.
 
-The JSON object should include the following fields:
+Constraints for the json object creation:
+- For the abstract_czech and abstract_english fields, you must look for sections explicitly labeled 'Abstrakt', 'Souhrn', 'Abstract', or 'Summary'. If none of these specific labels are found, the corresponding field must be set to null. Do not use any other text, such as the paper's introduction, methodology, or results, to create or infer an abstract.
+- Extract values exactly as is, do not summarize, infer, or create content from other text parts.
+- Do not modify the extracted items. Use them exactly as they appear in the source text, image, or file.
+- Do not fabricate or infer any value if missing information. 
+- Do not translate titles or abstracts into English.
+- Extract ISSN and DOI only if explicitly present in the document.
+- Normalize only values in titles, author names, and journal fields to standard capitalization (e.g., title case). Do not modify casing otherwise.
 
+The JSON object should include the following fields:
 - title: The title of the paper.
 - title_english (Optional): The English translation of the paper's title.
 - language: The ISO 639-1 language code (e.g., "en", "cs") identifying the primary language in which the paper is written.
@@ -37,15 +45,6 @@ The DOI extraction rules:
 If only the one DOI has been extracted - use this DOI for:
 - Use the Crossref API if available to validate the extracted metadata before the final output.
 - Fetch the PubMed ID using the DOI and include it in a field named "pubmedid".
-
-Constraints for the json object creation:
-- For the abstract_czech and abstract_english fields, you must look for sections explicitly labeled 'Abstrakt', 'Souhrn', 'Abstract', or 'Summary'. If none of these specific labels are found, the corresponding field must be set to null. Do not use any other text, such as the paper's introduction, methodology, or results, to create or infer an abstract.
-- Extract values exactly as is, do not summarize, infer, or create content from other text parts.
-- Do not modify the extracted items. Use them exactly as they appear in the source text, image, or file.
-- Do not fabricate or infer any value if missing information. 
-- Do not translate titles or abstracts into English.
-- Extract ISSN and DOI only if explicitly present in the document.
-- Normalize only values in titles, author names, and journal fields to standard capitalization (e.g., title case). Do not modify casing otherwise.
 
 Output Rules:
 - Output only the final JSON (no explanations or reasoning).
@@ -93,4 +92,3 @@ Output JSON object should follow this structure exactly (use null or empty array
 If the extracted metadata conflicts with metadata retrieved from Crossref API using the DOI, report these discrepancies explicitly.
 
 The input will be uploaded or text/URLs to be pasted in the next message.
-
