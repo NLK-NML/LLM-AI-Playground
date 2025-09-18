@@ -2,7 +2,7 @@
 
 Last update:  18.9.2025
 
-| Name              | Company         | Link                            | Model        | Ext API calls | PDF URL access |
+| Name              | Company         | Link                            | Model        | External API calls | PDF URL access |
 |-------------------|-----------------|---------------------------------|--------------|---------------|----------------|
 | **ChatGPT**       | OpenAI          | https://chatgpt.com              | GPT-5       | Yes           | Yes           |
 | **Claude**        | Anthropic       | https://www.anthropic.com/claude | Sonnet 4    | Yes           | Yes           |
