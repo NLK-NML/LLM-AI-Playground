@@ -10,6 +10,6 @@ Last update:  18.9.2025
 | **Gemini**        | Google          | https://gemini.google.com        | Gemini 2.5 Flash | Yes      | Yes / API* Yes | Yes/No - inconsistent, API* hallucinates |
 | **Grok**          | xAI             | https://grok.com                 | Grok 4      | Yes           | Yes | Yes           |
 
-> * Gemini 2.5 Flash API - 5000-6000 tokens, slower than Gemini 2.5 Flash-Lite API - 2000-3500 tokens
+> \* Gemini 2.5 Flash API - 5000-6000 tokens, slower than Gemini 2.5 Flash-Lite API - 2000-3500 tokens
 
 
