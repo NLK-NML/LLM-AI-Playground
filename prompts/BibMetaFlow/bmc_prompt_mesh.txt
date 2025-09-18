@@ -1,4 +1,4 @@
-Step 2: You will be provided with a JSON object containing bibliographic metadata of a publication and optionally a full text.
+Step 2: You will be provided with a JSON object containing bibliographic metadata of a publication and optionally a full text of the publication.
 
 If you have access to the MeSH Browser or any other Medical Subject Headings source:
 
@@ -9,7 +9,7 @@ Analyze all of the following fields:
 - abstract_english
 - keywords_english
 - keywords_czech
-- and the full text body (if provided)
+- and the full text body of the publication (if provided)
 
 Create a new JSON object called "mesh" that is a list of objects:
 

@@ -1,7 +1,10 @@
-Step 1: Create a JSON object containing bibliographic metadata of a scientific paper by the following instructions.
+Step 1: Create a JSON object containing bibliographic metadata of a scientific paper by the following processing instructions.
+
 Do not output anything after consuming these instructions - wait for the inputs that will come in the following messages.
 
-The instructions:
+The input to be processed might be a text or image or URL of a document.
+
+If the input is URL you will download the document for the processing.
 
 Constraints for JSON object creation:
 - For the abstract_czech and abstract_english fields, you must look for sections explicitly labeled 'Abstrakt', 'Souhrn', 'Abstract', or 'Summary'. If none of these specific labels are found, the corresponding field must be set to null. Do not use any other text, such as the paper's introduction, methodology, or results, to create or infer an abstract.
@@ -43,7 +46,7 @@ Output Rules:
 - Output only the final JSON (no explanations or reasoning).
 - Do not fabricate or infer missing information.
 - Do not modify or add to the extracted keyword fields.
-- Use pretty print and convert any Unicode escape sequences (e.g., \\uXXXX). Ensure all special characters are rendered directly.
+- Convert any Unicode escape sequences (e.g., \\uXXXX). Ensure all special characters are rendered directly.
 - The output JSON object should follow this structure exactly (use null or empty arrays/strings for missing optional fields):
 {
   "title": "string",
@@ -77,6 +80,6 @@ Output Rules:
   }
 }
 
-**Return a valid JSON object only, without any markdown formatting, comments, or other text outside of the JSON structure itself.**
+Return a pretty printed JSON object only, without any comments, or other text outside of the JSON structure itself.
 
 Do not output anything - just wait for the input in the next prompt message.
