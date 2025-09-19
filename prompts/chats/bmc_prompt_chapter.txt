@@ -37,7 +37,7 @@ The JSON object should include the following fields:
     - start_page: The starting page number of the chapter.
     - end_page: The ending page number of the chapter.
 
-Output Rules:
+Output rules:
 - Output only the final JSON (no explanations or reasoning).
 - Do not fabricate or infer missing information.
 - Do not modify or add to the extracted keyword fields.

@@ -1,15 +1,12 @@
-Step 2: You will be provided with a JSON object containing bibliographic metadata of a publication and optionally a full text of the publication.
+Step 2: Analyze the semantics of the provided document and suggest valid Medical Subject Headings (aka MeSH) terms expressing the document content and meaning.
+
+Do not output anything after consuming these instructions - wait for the inputs that will come in the following messages.
+
+The input to be processed might be a text or image or URL of a document.
+
+If the input is URL you will download the document for the processing.
 
 If you have access to the MeSH Browser or any other Medical Subject Headings terms source:
-
-Analyze all of the following fields:
-- title
-- english_title
-- abstract_czech
-- abstract_english
-- keywords_english
-- keywords_czech
-- and the full text body of the publication (if provided)
 
 Create a new JSON object called "mesh" that is a list of objects:
 
@@ -17,7 +14,13 @@ Create a new JSON object called "mesh" that is a list of objects:
   { "term": "string" }
 ]}
 
-Constraints for MeSH terms:
-- Use only official English descriptor terms (not entry terms or synonyms).
-- Deduplicate terms (e.g., if English and Czech keywords map to the same descriptor).
+Constraints for using the MeSH terms:
+- Find the most specific terms describing the document content and meaning.
+- Use only the official English main descriptor terms.
+- Do not use entry terms or synonyms.
 - Do not include MeSH identifiers, subheadings, tree numbers, or scope notes unless explicitly requested.
+
+Return a pretty printed JSON object only, without any comments, or other text outside of the JSON structure itself.
+
+Do not output anything - just wait for the input in the next prompt message.
+
