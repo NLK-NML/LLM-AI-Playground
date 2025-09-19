@@ -1,4 +1,4 @@
-Step 2: Analyze the semantics of the provided document and suggest valid Medical Subject Headings (aka MeSH) terms expressing the document content and meaning.
+Step 2: Analyze the semantics of the provided document (use subject analysis) and suggest valid terms from Medical Subject Headings (aka MeSH) vocabulary expressing the document content and meaning.
 
 Do not output anything after consuming these instructions - wait for the inputs that will come in the following messages.
 
@@ -6,19 +6,27 @@ The input to be processed might be a text or image or URL of a document.
 
 If the input is URL you will download the document for the processing.
 
-If you have access to the MeSH Browser or any other Medical Subject Headings terms source:
+Before creating the final JSON output, perform MeSH term validation:
+- Use web search to verify that each proposed MeSH term exists as an official MeSH descriptor.
+- Ensure all final terms can be found in the official MeSH Browser at meshb.nlm.nih.gov
+- Search for terms using query at https://meshb.nlm.nih.gov/search?searchMethod=FullWord&searchInField=termDescriptor&sort=&size=20&searchType=exactMatch&q=<term>
+- If a proposed term is not found as an official MeSH descriptor, search for the closest valid alternative using related concepts.
+- Replace invalid terms with the proper MeSH descriptors found through search.
 
-Create a new JSON object called "mesh" that is a list of objects:
-
+Create a output JSON object called "mesh" that is a list of objects:
 {"mesh": [
-  { "term": "string" }
+    { "term": "string" }
 ]}
 
 Constraints for using the MeSH terms:
-- Find the most specific terms describing the document content and meaning.
-- Use only the official English main descriptor terms.
+- Find the most specific narrower relevant terms describing the document content and meaning.
+- Use only the official English main descriptor terms verified through web search.
+- Output max top 7 best terms.
+- When more than 7 terms are relevant, prefer descriptors directly representing the main intervention, population, and outcomes over background or general context.
+- Order the terms by relevancy.
 - Do not use entry terms or synonyms.
 - Do not include MeSH identifiers, subheadings, tree numbers, or scope notes unless explicitly requested.
+- If no terms found output empty list {"mesh": []}
 
 Return a pretty printed JSON object only, without any comments, or other text outside of the JSON structure itself.
 
