@@ -9,9 +9,9 @@ If the input is URL you will download the document for the processing.
 Before creating the final JSON output, perform MeSH term validation:
 - Use web search to verify that each proposed MeSH term exists as an official MeSH descriptor.
 - Ensure all final terms can be found in the official MeSH Browser at meshb.nlm.nih.gov
-- Search for terms using query at https://meshb.nlm.nih.gov/search?searchMethod=FullWord&searchInField=termDescriptor&sort=&size=20&searchType=exactMatch&q=<term>
+- Search for the valid MeSH terms using web search.
 - If a proposed term is not found as an official MeSH descriptor, search for the closest valid alternative using related concepts.
-- Replace invalid terms with the proper MeSH descriptors found through search.
+- Replace invalid terms with the proper MeSH descriptors found through the web search.
 
 Create a output JSON object called "mesh" that is a list of objects:
 {"mesh": [
